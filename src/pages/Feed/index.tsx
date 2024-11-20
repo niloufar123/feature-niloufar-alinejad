@@ -1,9 +1,11 @@
 import {  useMemo } from "react";
-import PostCard from "./PostCard";
-import useStore from "../store/useStore";
+import PostCard from "../../components/PostCard";
+import { IPost } from "../../types/Post";
+import {useStore} from "../../store/useStore";
 
 const Feed: React.FC = () => {
   const posts = useStore((state) => state.posts);
+console.log('posts==>',posts);
 
   const postCount = useMemo(() => {
     return posts.length
@@ -12,7 +14,7 @@ const Feed: React.FC = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Posts ({postCount})</h1>{" "}
-      {posts.map((post) => (
+      {posts.map((post:IPost) => (
         <PostCard
           key={post.id}
           id={post.id}
@@ -20,6 +22,8 @@ const Feed: React.FC = () => {
           content={post.content}
           image={post.image}
           liked={post.liked}
+          marked={post.marked}
+
         />
       ))}
     </div>
