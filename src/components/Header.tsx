@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 
 const Header: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+
+  const storedValue = localStorage.getItem("darkMode") ;
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(storedValue? JSON.parse(storedValue): true);
 
   useEffect(() => {
+
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
     } else {
