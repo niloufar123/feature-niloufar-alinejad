@@ -12,9 +12,9 @@ export const usePostCard = (id: number) => {
     const handleToggleLike = () => toggleLike(id);
     const handleToggleMark = () => toggleMark(id);
 
-    const handleReport = (id: number) => {
+    const handleReport = (id: number) => {        
         setSelectedPost(id);
-        setShowReport(true);
+        setShowReport(!showReport);
     };
     return { handleToggleLike, handleToggleMark, showReport, handleReport, selectedPost,setShowReport,ReportReasons };
 };

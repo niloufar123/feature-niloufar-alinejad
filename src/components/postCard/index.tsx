@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { IPost } from "../../types/Post";
 import Modal from "../modal";
-import ReportList from "../Report";
 import LikeButton from "./LikeButton";
 import BookmarkButton from "./BookmarkButton";
 import { usePostCard } from "./usePostCard";
+import { ReportList } from "../Report";
 
 interface PostCardProps {
     id: IPost["id"];
@@ -42,7 +42,7 @@ const PostCard: React.FC<PostCardProps> = ({
                 <LikeButton liked={liked} onClick={handleToggleLike} />
                 <BookmarkButton marked={marked} onClick={handleToggleMark} />
                 <div><button
-                    onClick={() => handleReport}
+                    onClick={() => handleReport(id)}
                     className="px-4 py-2 m-2  rounded bg-gray-200 dark:bg-gray-700"
                 >
                     Report
@@ -53,7 +53,7 @@ const PostCard: React.FC<PostCardProps> = ({
 
             <Modal
                 title="The Report Reasons"
-                content={<ReportList />}
+                content={<ReportList setShowReport={setShowReport}/>}
                 show={showReport}
                 setShowReport={setShowReport}
             />
