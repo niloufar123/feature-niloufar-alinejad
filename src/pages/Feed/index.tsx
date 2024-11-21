@@ -5,7 +5,6 @@ import {useStore} from "../../store/useStore";
 
 const Feed: React.FC = () => {
   const posts = useStore((state) => state.posts);
-console.log('posts==>',posts);
 
   const postCount = useMemo(() => {
     return posts.length
